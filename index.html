@@ -9,7 +9,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="好自为之" type="application/atom+xml">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -21,7 +20,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '7.5.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
@@ -183,6 +182,85 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/06/area/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周军伟">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好自为之">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/06/area/" class="post-title-link" itemprop="url">area</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-06 11:46:30 / 修改时间：03:59:58" itemprop="dateCreated datePublished" datetime="2019-11-06T11:46:30Z">2019-11-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90/" itemprop="url" rel="index">
+                    <span itemprop="name">数据资源</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Area-sql"><a href="#Area-sql" class="headerlink" title="Area.sql"></a>Area.sql</h2><h3 id="Path"><a href="#Path" class="headerlink" title="Path: "></a>Path: /2019/11/06/area/area.sql</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--全国省市站信息</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> base_organization(org_id,ParentID,<span class="keyword">Name</span>,pinyin,Types,kong) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="number">0</span>, <span class="string">'中国'</span>, <span class="string">'zhong guo'</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> base_organization(org_id,ParentID,<span class="keyword">Name</span>,pinyin,Types,kong) <span class="keyword">VALUES</span> (<span class="number">110000</span>, <span class="number">1</span>, <span class="string">'北京'</span>, <span class="string">'bei jing'</span>, <span class="number">1</span>, <span class="literal">NULL</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> base_organization(org_id,ParentID,<span class="keyword">Name</span>,pinyin,Types,kong) <span class="keyword">VALUES</span> (<span class="number">110100</span>, <span class="number">110000</span>, <span class="string">'北京市'</span>, <span class="string">'bei jing shi'</span>, <span class="number">2</span>, <span class="string">''</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> base_organization(org_id,ParentID,<span class="keyword">Name</span>,pinyin,Types,kong) <span class="keyword">VALUES</span> (<span class="number">110101</span>, <span class="number">110100</span>, <span class="string">'东城区'</span>, <span class="string">'dong cheng qu'</span>, <span class="number">3</span>, <span class="string">''</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> base_organization(org_id,ParentID,<span class="keyword">Name</span>,pinyin,Types,kong) <span class="keyword">VALUES</span> (<span class="number">110102</span>, <span class="number">110100</span>, <span class="string">'西城区'</span>, <span class="string">'xi cheng qu'</span>, <span class="number">3</span>, <span class="string">''</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> base_organization(org_id,ParentID,<span class="keyword">Name</span>,pinyin,Types,kong) <span class="keyword">VALUES</span> (<span class="number">110105</span>, <span class="number">110100</span>, <span class="string">'朝阳区'</span>, <span class="string">'chao yang qu'</span>,</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>Download</strong>: <a href="/2019/11/06/area/area.sql" title="area.sql">area.sql</a></p>
+<img src="/2019/11/06/area/8.png" class="" title="This is an example image">
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -461,29 +539,24 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
         <a href="https://github.com/xiaoluobutou" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;xiaoluobutou" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
@@ -527,7 +600,7 @@
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.5.0
   </div>
 
         
@@ -555,7 +628,7 @@
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/pisces.js"></script>
+<script src="/js/schemes/muse.js"></script>
 <script src="/js/next-boot.js"></script>
 
 
