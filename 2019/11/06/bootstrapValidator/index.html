@@ -51,18 +51,18 @@
   };
 </script>
 
-  <meta name="description" content="bootstrap-table返回数据处理1234567891011121314151617181920212223&amp;#123;	title: &amp;apos;缴费时间&amp;apos;,	field: &amp;apos;payment_time&amp;apos;,	align: &amp;apos;center&amp;apos;,	formatter: function (value, row, index) &amp;#123; &#x2F;&#x2F;截取字符串		return row.payment_time.">
-<meta name="keywords" content="前端,bootstrap,bootstrap-table">
+  <meta name="description" content="bootstrapValidator模板前端代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556$(&quot;#baseInfo&quot;).bootstrapValidator(&amp;apos;validate&amp;apos;);&#x2F;&#x2F;提交验证	if ($(&quot;#baseInfo&quot;).d">
+<meta name="keywords" content="前端,bootstrap,bootstrap-validator">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bootstrap-table formatter属性">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;bootstrap&#x2F;index.html">
+<meta property="og:title" content="bootstrapValidator模板">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;bootstrapValidator&#x2F;index.html">
 <meta property="og:site_name" content="好自为之">
-<meta property="og:description" content="bootstrap-table返回数据处理1234567891011121314151617181920212223&amp;#123;	title: &amp;apos;缴费时间&amp;apos;,	field: &amp;apos;payment_time&amp;apos;,	align: &amp;apos;center&amp;apos;,	formatter: function (value, row, index) &amp;#123; &#x2F;&#x2F;截取字符串		return row.payment_time.">
+<meta property="og:description" content="bootstrapValidator模板前端代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556$(&quot;#baseInfo&quot;).bootstrapValidator(&amp;apos;validate&amp;apos;);&#x2F;&#x2F;提交验证	if ($(&quot;#baseInfo&quot;).d">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-05T07:44:25.491Z">
+<meta property="og:updated_time" content="2019-11-05T09:59:37.551Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/11/05/bootstrap/">
+<link rel="canonical" href="http://yoursite.com/2019/11/06/bootstrapValidator/">
 
 
 <script id="page-configurations">
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title>bootstrap-table formatter属性 | 好自为之</title>
+  <title>bootstrapValidator模板 | 好自为之</title>
   
 
 
@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/bootstrap/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/06/bootstrapValidator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -204,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          bootstrap-table formatter属性
+          bootstrapValidator模板
         </h1>
 
         <div class="post-meta">
@@ -215,7 +215,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-05 14:56:38 / 修改时间：07:44:25" itemprop="dateCreated datePublished" datetime="2019-11-05T14:56:38Z">2019-11-05</time>
+              <time title="创建时间：2019-11-05 17:30:38 / 修改时间：09:59:37" itemprop="dateCreated datePublished" datetime="2019-11-05T17:30:38Z">2019-11-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,7 +240,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="bootstrap-table"><a href="#bootstrap-table" class="headerlink" title="bootstrap-table"></a>bootstrap-table</h2><h3 id="返回数据处理"><a href="#返回数据处理" class="headerlink" title="返回数据处理"></a>返回数据处理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	title: <span class="string">'缴费时间'</span>,</span><br><span class="line">	field: <span class="string">'payment_time'</span>,</span><br><span class="line">	align: <span class="string">'center'</span>,</span><br><span class="line">	formatter: <span class="function"><span class="keyword">function</span> (<span class="params">value, row, index</span>) </span>&#123; <span class="comment">//截取字符串</span></span><br><span class="line">		<span class="keyword">return</span> row.payment_time.substring(<span class="number">0</span>,<span class="number">10</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	formatter: <span class="function"><span class="keyword">function</span> (<span class="params">value, row, index</span>) </span>&#123; <span class="comment">//获取序号</span></span><br><span class="line">                    <span class="comment">//获取每页显示的数量</span></span><br><span class="line">                    <span class="keyword">var</span> pageSize=$(<span class="string">'#FAJk_table'</span>).bootstrapTable(<span class="string">'getOptions'</span>).pageSize;</span><br><span class="line">                    <span class="comment">//获取当前是第几页</span></span><br><span class="line">                    <span class="keyword">var</span> pageNumber=$(<span class="string">'#FAJk_table'</span>).bootstrapTable(<span class="string">'getOptions'</span>).pageNumber;</span><br><span class="line">                    <span class="comment">//返回序号，注意index是从0开始的，所以要加上1</span></span><br><span class="line">                    <span class="keyword">return</span> pageSize * (pageNumber - <span class="number">1</span>) + index + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	formatter:<span class="function"><span class="keyword">function</span>(<span class="params">value,row,index</span>)</span>&#123; <span class="comment">//返回操作按钮</span></span><br><span class="line">                    <span class="keyword">var</span> edit = <span class="string">"&lt;a class='btn btn-md'&gt;&lt;span class='glyphicon glyphicon-pencil'&gt;&lt;/span&gt;&lt;/a&gt;"</span>;</span><br><span class="line">                    <span class="keyword">var</span> del = <span class="string">"&lt;a class='btn btn-md'&gt;&lt;span class='glyphicon glyphicon-trash'&gt;&lt;/span&gt;&lt;/a&gt;"</span>;</span><br><span class="line">                    <span class="keyword">return</span> edit+del;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="bootstrapValidator模板"><a href="#bootstrapValidator模板" class="headerlink" title="bootstrapValidator模板"></a>bootstrapValidator模板</h2><h3 id="前端代码"><a href="#前端代码" class="headerlink" title="前端代码"></a>前端代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#baseInfo"</span>).bootstrapValidator(<span class="string">'validate'</span>);<span class="comment">//提交验证</span></span><br><span class="line">	<span class="keyword">if</span> ($(<span class="string">"#baseInfo"</span>).data(<span class="string">'bootstrapValidator'</span>).isValid()) &#123;<span class="comment">//获取验证结果，如果成功，执行下面代码</span></span><br><span class="line">		<span class="comment">//显示</span></span><br><span class="line">		saveAndUpdatteObjectByReturn_ContainFile(<span class="string">"/InstructoRegister/save"</span>, parameter, <span class="literal">null</span>, <span class="literal">null</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(data);</span><br><span class="line">		&#125;);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">$(<span class="string">'#baseInfo'</span>).bootstrapValidator(&#123;</span><br><span class="line">	<span class="comment">// feedbackIcons: &#123;</span></span><br><span class="line">	<span class="comment">//     valid: 'glyphicon glyphicon-ok',</span></span><br><span class="line">	<span class="comment">//     invalid: 'glyphicon glyphicon-remove',</span></span><br><span class="line">	<span class="comment">//     validating: 'glyphicon glyphicon-refresh'</span></span><br><span class="line">	<span class="comment">// &#125;,</span></span><br><span class="line">	fields: &#123;</span><br><span class="line">		</span><br><span class="line">		id_card: &#123;</span><br><span class="line">			trigger:<span class="string">"change"</span>,</span><br><span class="line">			validators: &#123;</span><br><span class="line">				notEmpty: &#123;</span><br><span class="line">					message: <span class="string">'不可为空'</span></span><br><span class="line">				&#125;,</span><br><span class="line">				remote:&#123;</span><br><span class="line">					url:<span class="string">'/InstructoRegister/isExistIdCard'</span>,</span><br><span class="line">					message:<span class="string">'此身份证号已存在'</span>,</span><br><span class="line">					data:<span class="function"><span class="keyword">function</span>(<span class="params">validator,$field,value</span>)</span>&#123;</span><br><span class="line">						<span class="keyword">return</span>&#123;</span><br><span class="line">							id_card:$(<span class="string">'#id_card'</span>).val(),</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;,</span><br><span class="line">					delay:<span class="number">3000</span></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line"></span><br><span class="line">		phone_number: &#123;</span><br><span class="line">			validators: &#123;</span><br><span class="line">				notEmpty: &#123;</span><br><span class="line">					message: <span class="string">'不可为空'</span></span><br><span class="line">				&#125;,</span><br><span class="line">				regexp: &#123;</span><br><span class="line">					regexp:   <span class="regexp">/^1[3|4|5|7|8][0-9]&#123;9&#125;$/</span>,</span><br><span class="line">					message: <span class="string">'手机号无效'</span></span><br><span class="line">				&#125;,</span><br><span class="line">				stringLength: &#123;<span class="comment">/*长度提示*/</span></span><br><span class="line">					max: <span class="number">10</span>,</span><br><span class="line">					message: <span class="string">'*姓名长度必须小于10'</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Controller</span></span><br><span class="line">   <span class="meta">@RequestMapping</span>(value=<span class="string">"/isExistIdCard"</span>, produces = <span class="string">"application/json; charset=utf-8"</span>)</span><br><span class="line">   <span class="meta">@ResponseBody</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> JSONObject <span class="title">isExistIdCard</span><span class="params">(HttpServletRequest request, HttpSession session)</span> </span>&#123;</span><br><span class="line">       Map map = ZjwUtil.getRequestParams(request);</span><br><span class="line">       <span class="keyword">return</span> instructoRegisterService.isExistIdCard(map);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Service</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> JSONObject <span class="title">isExistIdCard</span><span class="params">(Map map)</span></span>&#123;</span><br><span class="line">       JSONObject result = <span class="keyword">new</span> JSONObject();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span>(instructoRegisterMapper.isExistIdCard(map)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">           result.put(<span class="string">"valid"</span>, <span class="keyword">false</span>);</span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">           result.put(<span class="string">"valid"</span>, <span class="keyword">true</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -251,24 +256,21 @@
           <div class="post-tags">
               <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
               <a href="/tags/bootstrap/" rel="tag"># bootstrap</a>
-              <a href="/tags/bootstrap-table/" rel="tag"># bootstrap-table</a>
+              <a href="/tags/bootstrap-validator/" rel="tag"># bootstrap-validator</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/11/04/hello-world/" rel="next" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2019/11/06/markdown/" rel="next" title="Markdown手册">
+                  <i class="fa fa-chevron-left"></i> Markdown手册
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/06/markdown/" rel="prev" title="Markdown手册">
-                  Markdown手册 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -307,7 +309,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap-table"><span class="nav-number">1.</span> <span class="nav-text">bootstrap-table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#返回数据处理"><span class="nav-number">1.1.</span> <span class="nav-text">返回数据处理</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrapValidator模板"><span class="nav-number">1.</span> <span class="nav-text">bootstrapValidator模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前端代码"><span class="nav-number">1.1.</span> <span class="nav-text">前端代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后端代码"><span class="nav-number">1.2.</span> <span class="nav-text">后端代码</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
