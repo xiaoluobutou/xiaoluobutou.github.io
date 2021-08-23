@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="存储过程语法Mysql数据库存储过程基本语法讲解一般情况下MYSQL以；结尾表示确认输入并执行语句，但在存储过程中；不是表示结束，因此可以用该命令将；号改为&#x2F;&#x2F;表示确认输入并执行。存储过程如同一门程序设计语言，同样包含了数据类型、流程控制、输入和输出和它自己的函数库。一.创建存储过程1.基本语法： 1234create procedure sp_name()begin.........end 2.">
+<meta name="keywords" content="存储过程语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql_grammer">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;30&#x2F;sql-grammer&#x2F;index.html">
+<meta property="og:site_name" content="好自为之">
+<meta property="og:description" content="存储过程语法Mysql数据库存储过程基本语法讲解一般情况下MYSQL以；结尾表示确认输入并执行语句，但在存储过程中；不是表示结束，因此可以用该命令将；号改为&#x2F;&#x2F;表示确认输入并执行。存储过程如同一门程序设计语言，同样包含了数据类型、流程控制、输入和输出和它自己的函数库。一.创建存储过程1.基本语法： 1234create procedure sp_name()begin.........end 2.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-30T03:16:15.636Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2019/12/30/sql-grammer/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>sql_grammer | 好自为之</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">好自为之</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">nm$l</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/30/sql-grammer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周军伟">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好自为之">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          sql_grammer
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-30 11:08:23 / 修改时间：03:16:15" itemprop="dateCreated datePublished" datetime="2019-12-30T11:08:23Z">2019-12-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="存储过程语法"><a href="#存储过程语法" class="headerlink" title="存储过程语法"></a>存储过程语法</h2><p>Mysql数据库存储过程基本语法讲解<br>一般情况下MYSQL以；结尾表示确认输入并执行语句，但在存储过程中；不是表示结束，因此可以用该命令将；号改为//表示确认输入并执行。存储过程如同一门程序设计语言，同样包含了数据类型、流程控制、输入和输出和它自己的函数库。<br>一.创建存储过程<br>1.基本语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> sp_name()</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">.........</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>2.参数传递<br>二.调用存储过程<br>1.基本语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> sp_name()</span><br></pre></td></tr></table></figure>
+<p>注意：存储过程名称后面必须加括号，哪怕该存储过程没有参数传递<br>三.删除存储过程<br>1.基本语法：<br>drop procedure [存储过程名称];   //后面没有括号<br>2.注意事项<br>(1)不能在一个存储过程中删除另一个存储过程，只能调用另一个存储过程<br>四.区块，条件，循环<br>1.区块定义，常用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">......</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<p>也可以给区块起别名，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lable:<span class="keyword">begin</span></span><br><span class="line">...........</span><br><span class="line"><span class="keyword">end</span> lable;</span><br></pre></td></tr></table></figure>
+<p>可以用leave lable;跳出区块，执行区块以后的代码<br>2.条件语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if 条件 then</span><br><span class="line"> statement</span><br><span class="line"> else</span><br><span class="line"> statement</span><br><span class="line"> <span class="keyword">end</span> <span class="keyword">if</span>;</span><br></pre></td></tr></table></figure>
+<p>3.循环语句<br>(1).while循环<br>[label:]<br>WHILE expression DO<br> statements<br> END WHILE [label] ;<br>(2).loop循环<br>[label:] LOOP<br> statements<br> END LOOP [label];<br>(3).repeat until循环<br>[label:] REPEAT<br> statements<br> UNTIL expression<br> END REPEAT [label] ;</p>
+<p>五.其他常用命令<br>1.show procedure status<br>显示数据库中所有存储的存储过程基本信息，包括所属数据库，存储过程名称，创建时间等<br>2.show create procedure sp_name<br>显示某一个存储过程的详细信息<br>下面看一个例子<br>一、MySQL 创建存储过程<br>“pr_add” 是个简单的 MySQL 存储过程，这个MySQL 存储过程有两个 int 类型的输入参数 “a”、“b”，返回这两个参数的和<br>delimiter //   – 改变分割符<br>drop procedure if exists pr_add//  – 若之前创建有这个存储过程则删除<br>计算两个数之和</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pr_add (a <span class="built_in">int</span>,b <span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">declare</span> c <span class="built_in">int</span>;</span><br><span class="line">if a is null then</span><br><span class="line"><span class="keyword">set</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">if b is null then</span><br><span class="line"><span class="keyword">set</span> b = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">set</span> c = a + b;</span><br><span class="line"><span class="keyword">select</span> c <span class="keyword">as</span> <span class="keyword">sum</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">二、调用 MySQL 存储过程</span><br><span class="line"><span class="keyword">call</span> pr_add(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">执行 MySQL 存储过程，存储过程参数为 MySQL 用户变量。</span><br><span class="line"><span class="keyword">set</span> @a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">set</span> @b = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">call</span> pr_add(@a, @b);</span><br><span class="line">三、MySQL 存储过程特点</span><br><span class="line">创建 MySQL 存储过程的简单语法为：</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> 存储过程名字()</span><br><span class="line">(</span><br><span class="line">[<span class="keyword">in</span>|<span class="keyword">out</span>|inout] 参数 datatype</span><br><span class="line">)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">MySQL 语句;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line">MySQL 存储过程参数如果不显式指定“in”、“out”、“inout”，则默认为“in”。习惯上，对于是“in” 的参数，我们都不会显式指定。</span><br><span class="line">1. MySQL 存储过程名字后面的“()”是必须的，即使没有一个参数，也需要“()”</span><br><span class="line">2. MySQL 存储过程参数，不能在参数名称前加“@”，如：“@a int”。下面的创建存储过程语法在 MySQL 中是错误的（在 SQL Server 中是正确的）。 MySQL 存储过程中的变量，不需要在变量名字前加“@”，虽然 MySQL 客户端用户变量要加个“@”。</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pr_add</span><br><span class="line">(</span><br><span class="line">@a <span class="built_in">int</span>, <span class="comment">-- 错误</span></span><br><span class="line">b <span class="built_in">int</span> <span class="comment">-- 正确</span></span><br><span class="line">)</span><br><span class="line"><span class="number">3.</span> MySQL 存储过程的参数不能指定默认值。</span><br><span class="line"><span class="number">4.</span> MySQL 存储过程不需要在 <span class="keyword">procedure</span> <span class="keyword">body</span> 前面加 “<span class="keyword">as</span>”。而 <span class="keyword">SQL</span> <span class="keyword">Server</span> 存储过程必须加 “<span class="keyword">as</span>” 关键字。</span><br><span class="line"><span class="string">``</span><span class="string">`sql</span></span><br><span class="line"><span class="string">create procedure pr_add</span></span><br><span class="line"><span class="string">(</span></span><br><span class="line"><span class="string">a int,</span></span><br><span class="line"><span class="string">b int</span></span><br><span class="line"><span class="string">)</span></span><br><span class="line"><span class="string">as -- 错误，MySQL 不需要 “as”</span></span><br><span class="line"><span class="string">begin</span></span><br><span class="line"><span class="string">mysql statement ...;</span></span><br><span class="line"><span class="string">end;</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>如果 MySQL 存储过程中包含多条 MySQL 语句，则需要 begin end 关键字。<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pr_add</span><br><span class="line">(</span><br><span class="line">a <span class="built_in">int</span>,</span><br><span class="line">b <span class="built_in">int</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">mysql <span class="keyword">statement</span> <span class="number">1</span> ...;</span><br><span class="line">mysql statement 2 ...;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></li>
+<li>MySQL 存储过程中的每条语句的末尾，都要加上分号 “;”<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">declare</span> c <span class="built_in">int</span>;</span><br><span class="line">if a is null then</span><br><span class="line"><span class="keyword">set</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></li>
+<li>MySQL 存储过程中的注释。<br>declare c int; – 这是单行 MySQL 注释 （注意 – 后至少要有一个空格）<br>if a is null then # 这也是个单行 MySQL 注释<br>set a = 0;<br>end if;<br>…<br>end;</li>
+<li>不能在 MySQL 存储过程中使用 “return” 关键字。<br>set c = a + b;<br>select c as sum;<br>end;</li>
+<li>调用 MySQL 存储过程时候，需要在过程名字后面加“()”，即使没有一个参数，也需要“()”<br>call pr_no_param();</li>
+<li>因为 MySQL 存储过程参数没有默认值，所以在调用 MySQL 存储过程时候，不能省略参数。可以用 null 来替代。<br>我们再通过一个实例来加深一下以上知识点：<br>1、下面为一个存储过程的定义过程：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> proc_name (<span class="keyword">in</span> parameter <span class="built_in">integer</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">variable</span> <span class="built_in">varchar</span>(<span class="number">20</span>);</span><br><span class="line">if parameter=1 then <span class="keyword">set</span> <span class="keyword">variable</span>=<span class="string">'MySQL'</span>;</span><br><span class="line">else <span class="keyword">set</span> <span class="keyword">variable</span>=<span class="string">'PHP'</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb (<span class="keyword">name</span>) <span class="keyword">values</span> (<span class="keyword">variable</span>);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+MySQL中存储过程的建立以关键字create procedure开始，后面紧跟存储过程的名称和参数。MySQL的存储过程名称不区分大小写，例如PROCE1()和proce1()代表同一个存储过程名。存储过程名不能与MySQL数据库中的内建函数重名。<br>存储过程的参数一般由3部分组成。第一部分可以是in、out或inout。in表示向存储过程中传入参数；out表示向外传出参数；inout表示定义的参数可传入存储过程，并可以被存储过程修改后传出存储过程，存储过程默认为传入参数，所以参数in可以省略。第二部分为参数名。第三部分为参数的类型，该类型为MySQL数据库中所有可用的字段类型，如果有多个参数，参数之间可以用逗号进行分割。<br>MySQL存储过程的语句块以begin开始，以end结束。语句体中可以包含变量的声明、控制语句、SQL查询语句等。由于存储过程内部语句要以分号结束，所以在定义存储过程前应将语句结束标志“;”更改为其他字符，并且该字符在存储过程中出现的几率也应该较低，可以用关键字delimiter更改。例如：<br>mysql&gt;delimiter //<br>存储过程创建之后，可用如下语句进行删除，参数proc_name指存储过程名。<br>drop procedure proc_name<br>实现过程<br>（1）MySQL存储过程是在“命令提示符”下创建的，所以首先应该打开“命令提示符”窗口。<br>（2）进入“命令提示符”窗口后，首先应该登录MySQL数据库服务器，在“命令提示符”下输入如下命令：<br>mysql –u用户名 –p用户密码<br>（3）更改语句结束符号，本实例将语句结束符更改为“//”。代码如下：<br>delimiter //<br>（4）创建存储过程前应首先选择某个数据库。代码如下：<br>use 数据库名<br>（5）创建存储过程。<br>（6）通过call语句调用存储过程。<br>举一反三<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span>(</span><br><span class="line"><span class="keyword">id</span> mediumint(<span class="number">8</span>) <span class="keyword">unsigned</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">char</span>(<span class="number">15</span>) <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">default</span> ”,</span><br><span class="line">pass <span class="built_in">char</span>(<span class="number">32</span>) <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">default</span> ”,</span><br><span class="line">note <span class="built_in">text</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">primary <span class="keyword">key</span> (<span class="keyword">id</span>)</span><br><span class="line">)<span class="keyword">engine</span>=<span class="keyword">Innodb</span> <span class="keyword">charset</span>=utf8;</span><br></pre></td></tr></table></figure>
+示例一<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">delimiter //</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> proc_name (<span class="keyword">in</span> parameter <span class="built_in">integer</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">if</span> parameter=<span class="number">0</span> <span class="keyword">then</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">asc</span>;</span><br><span class="line">else</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">desc</span>;</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line">//</span><br><span class="line">delimiter ;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">warnings</span>;</span><br><span class="line"><span class="keyword">call</span> proc_name(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">call</span> proc_name(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+示例二<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">procedure</span> proc_name;</span><br><span class="line">delimiter //</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> proc_name (<span class="keyword">in</span> parameter <span class="built_in">integer</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">variable</span> <span class="built_in">varchar</span>(<span class="number">20</span>);</span><br><span class="line">if parameter=1 then</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">variable</span>=<span class="string">'Windows'</span>;</span><br><span class="line">else</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">variable</span>=<span class="string">'Linux'</span>;</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">select</span> parameter;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line">//</span><br><span class="line">delimiter ;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">warnings</span>;</span><br><span class="line"><span class="keyword">call</span> proc_name(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">call</span> proc_name(<span class="number">0</span>);</span><br><span class="line">删除<span class="keyword">drop</span> <span class="keyword">procedure</span> proc_name;</span><br></pre></td></tr></table></figure>
+附注：</li>
+<li>show procedure status;<br>显示数据库中所有存储的存储过程基本信息，包括所属数据库，存储过程名称，创建时间等</li>
+<li>show create procedure sp_name<br>显示某一个存储过程的详细信息<br>以上就是本篇MYSQL基本语法相关知识的全部内容，感觉不错就分享给你的朋友们吧。<br>————————————————<br>版权声明：本文为CSDN博主「望崖」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/kingscoming/article/details/79273174" target="_blank" rel="noopener">https://blog.csdn.net/kingscoming/article/details/79273174</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%AF%AD%E6%B3%95/" rel="tag"># 存储过程语法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/12/19/update-ssh/" rel="next" title="update_ssh">
+                  <i class="fa fa-chevron-left"></i> update_ssh
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/12/30/init-sys-department/" rel="prev" title="init_sys_department">
+                  init_sys_department <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储过程语法"><span class="nav-number">1.</span> <span class="nav-text">存储过程语法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="周军伟"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">周军伟</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xiaoluobutou" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;xiaoluobutou" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:17854169387@163.com" title="E-Mail &amp;rarr; mailto:17854169387@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/yourname" title="StackOverflow &amp;rarr; https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://cn.bing.com/dict/" title="https:&#x2F;&#x2F;cn.bing.com&#x2F;dict&#x2F;" rel="noopener" target="_blank">Bing-Dict</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周军伟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
