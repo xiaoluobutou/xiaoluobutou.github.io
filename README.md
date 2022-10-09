@@ -1,2 +1,2 @@
 # xiaoluobutou.github.io
-The repository is my blog
+The repository is my Hexo blog
